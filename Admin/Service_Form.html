@@ -29,8 +29,18 @@
 			<link rel="stylesheet" href="css/owl.carousel.css">
 			<link rel="stylesheet" href="css/main.css">
 			<link rel="stylesheet" type="text/css" href="css/new1.css">
+			<link rel="stylesheet" type="text/css" href="css/newses.css">
 
 		</head>
+<!-- 		<script>
+        function InsertData(){
+            $.ajax({
+                type: "POST",
+                url: "insert.php",
+                data: jQuery("form1").serialize()
+            });
+        }
+    	</script> -->
 		<body>	
 			  <header id="header" id="home">
 		  		<div class="header-top">
@@ -57,22 +67,7 @@
 				      <div id="logo">
 				        <a href="index.html"><img src="img/logo.png" alt="" title="" /></a>
 				      </div>
-				      <nav id="nav-menu-container">
-				        <ul class="nav-menu">
-				          <li class="menu-active"><a href="index.html">Home</a></li>
-				          <li><a href="about.html">About</a></li>
-				          <li><a href="services.html">Service</a></li>
-				          <li><a href="feedback.html">Feedback</a></li>
-				          <li class="menu-has-children"><a href="">Blog</a>
-				            <ul>
-				              <li><a href="blog-home.html">Blog Home</a></li>
-				              <li><a href="blog-single.html">Blog Single</a></li>
-				            </ul>
-				          </li>						          
-			              <li><a href="elements.html">Elements</a></li>				          
-				          <li><a href="contact.html">Contact</a></li>
-				        </ul>
-				      </nav><!-- #nav-menu-container -->		    		
+				      <!-- #nav-menu-container -->		    		
 			    	</div>
 			    </div>
 			</center>
@@ -81,29 +76,52 @@
 			  			<!-- Start service Area -->
 			<section class="service-area section-gap1" id="service">
 				<div class="row">
-					<div class="col-md-6" id="Services">
-						<center>
-						<div class="A_Head">
-							Services
-						</div>
-						<div class="Links">
-						 <a href="Service_Form.html" class="genric-btn success circle">Add Services</a>
-						 <a href="View_Service.html" class="genric-btn success circle">View Services</a>
-						</div>
-						</center>
+					<div class="col-md-2">
 					</div>
-					<div class="col-md-6" id="Users">
-						<center>
-						<div class="A_Head">
-							Users
-						</div>
-						<div class="Links">
-						 <a href="Add_User.html" class="genric-btn success circle">Add User</a>
-						 <a href="View_User.html" class="genric-btn success circle">View User</a>
-						</div>
-						</center>
-					</div>
-				
+					<div class="col-md-8 form">
+						<form action="insert.php" method="POST">
+                          <div class="top-row">
+                                          <div class="field-wrap">
+                                  <label>
+                                    Service<span class="req">*</span>
+                                  </label>
+                                  <input type="text" id="service" name ="service" required autocomplete="off" />
+                              </div>
+        
+                              <div class="field-wrap">
+                                <label>
+                                  Provider<span class="req">*</span>
+                                </label>
+                                <input type="text" id="provider" name = "provider"required autocomplete="off"/>
+                              </div>
+
+                            <div class="field-wrap">
+                              <label>
+                                  Price<span class="req">*</span>
+                              </label>
+                              <input type="text" id="Price" name="price"required autocomplete="off"/>
+                            </div>
+          
+                            <div class="field-wrap">
+                              <label>
+                                Unique_Id<span class="req">*</span>
+                              </label>
+                              <input type="text" id="u_id" name="u_id"required autocomplete="off"/>
+                            </div>
+
+                            <div class="field-wrap">
+                              <label>
+                                Type<span class="req">*</span>
+                              </label>
+                              <input type="text" id="type" name="type"required autocomplete="off"/>
+                            </div>
+                            <button class="button button-block" type="Submit">Get Started</button>
+                          </div>
+                  </form>
+              </div>
+              <div class="col-md-2">
+              </div>
+          </div>
 			</section>
 			<!-- End service Area -->
 
@@ -212,5 +230,44 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     		<script src="js/jquery.circlechart.js"></script>								
 			<script src="js/mail-script.js"></script>	
 			<script src="js/main.js"></script>	
+			      <script>
+          $('.form').find('input, textarea').on('keyup blur focus', function (e) {
+            var $this = $(this),
+              label = $this.prev('label');
+              if (e.type === 'keyup') {
+                  if ($this.val() === '') {
+                      label.removeClass('active highlight');
+                  }  
+                  else {
+                      label.addClass('active highlight');
+                    }
+                } 
+            else if (e.type === 'blur') {
+                      if( $this.val() === '' ) {
+                        label.removeClass('active highlight'); 
+                        }
+                        else {
+                        label.removeClass('highlight');   
+                        }   
+                                     } 
+                    else if (e.type === 'focus') {
+                        if( $this.val() === '' ) {
+                        label.removeClass('highlight'); 
+                      } 
+                      else if( $this.val() !== '' ) {
+                        label.addClass('highlight');
+                      }
+                  }
+            });
+
+          $('.tab a').on('click', function (e) {
+                e.preventDefault();
+                $(this).parent().addClass('active');
+                $(this).parent().siblings().removeClass('active');
+                target = $(this).attr('href');
+                $('.tab-content > div').not(target).hide();
+                $(target).fadeIn(600);
+             });
+  </script> 
 		</body>
 	</html>

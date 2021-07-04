@@ -31,7 +31,18 @@
 			<link rel="stylesheet" type="text/css" href="css/new1.css">
 
 		</head>
-		<body>	
+				<script>
+       			function GetData(){
+            	$.ajax({
+                type: "GET",
+                url: "data.php",
+                success: function(data){
+                    document.getElementById("here").innerHTML = data;
+                }
+            });
+        }
+    	</script>
+		<body onload="GetData()">	
 			  <header id="header" id="home">
 		  		<div class="header-top">
 		  			<div class="container">
@@ -80,30 +91,10 @@
 
 			  			<!-- Start service Area -->
 			<section class="service-area section-gap1" id="service">
-				<div class="row">
-					<div class="col-md-6" id="Services">
-						<center>
-						<div class="A_Head">
-							Services
-						</div>
-						<div class="Links">
-						 <a href="Service_Form.html" class="genric-btn success circle">Add Services</a>
-						 <a href="View_Service.html" class="genric-btn success circle">View Services</a>
-						</div>
-						</center>
-					</div>
-					<div class="col-md-6" id="Users">
-						<center>
-						<div class="A_Head">
-							Users
-						</div>
-						<div class="Links">
-						 <a href="Add_User.html" class="genric-btn success circle">Add User</a>
-						 <a href="View_User.html" class="genric-btn success circle">View User</a>
-						</div>
-						</center>
-					</div>
-				
+				<div id="here" class="data"><center>
+					
+				</center>
+				</div>
 			</section>
 			<!-- End service Area -->
 
